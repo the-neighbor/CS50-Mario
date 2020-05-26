@@ -1,0 +1,20 @@
+Map = Class{}
+
+function Map:init()
+    self.spritesheet = love.graphics.newImage('graphics/spritesheet.png')
+    self.tileWidth = 16
+    self.tileHeight = 16
+    self.mapWidth = 30
+    self.mapHeight = 28
+    self.tiles = {}
+
+    self.tileSprites = generateQuads(self.spritesheet, self.tileWidth, self.tileHeight)
+end
+
+function Map:update(dt)
+
+end
+
+function Map:render()
+
+end
