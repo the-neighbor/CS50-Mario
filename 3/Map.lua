@@ -116,17 +116,21 @@ end
 function Map:update(dt)
    if love.keyboard.isDown('w') then
       --up movement
-      self.camY = math.max(0 , math.floor(self.camY + dt * -SCROLL_SPEED))
+      self.camY = self.camY + dt * -SCROLL_SPEED
    elseif love.keyboard.isDown('a') then
       --left movement
-      self.camX = math.max(0, math.floor(self.camX + dt * -SCROLL_SPEED))
+      self.camX = (self.camX + dt * -SCROLL_SPEED)
    elseif love.keyboard.isDown('s') then
       --down movement
-      self.camY =  math.min(self.mapHeightPixels - VIRTUAL_HEIGHT, math.floor(self.camY + dt * SCROLL_SPEED))
+      self.camY = self.camY + dt * SCROLL_SPEED
    elseif love.keyboard.isDown('d') then
       --right movement
-      self.camX = math.min(self.mapWidthPixels - VIRTUAL_WIDTH, math.floor(self.camX + dt * SCROLL_SPEED))
+      self.camX = self.camX + dt * SCROLL_SPEED
    end
+   self.camY = clamp(self.camY, 0, self.mapHeightPixels - VIRTUAL_HEIGHT)
+   self.camX = clamp(self.camX, 0, self.mapWidthPixels - VIRTUAL_WIDTH)
+   self.camY = math.floor(self.camY)
+   self.camX = math.floor(self.camX)
 end
 
 function Map:render()

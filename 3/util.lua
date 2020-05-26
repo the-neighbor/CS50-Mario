@@ -13,3 +13,13 @@ function generateQuads (atlas, tilewidth, tileheight)
         end
     return quads
 end
+
+function clamp(value, min, max)
+    local returnValue = value
+    if returnValue > max then
+        returnValue = max
+    elseif returnValue < min then
+        returnValue = min
+    end
+    return returnValue
+end
